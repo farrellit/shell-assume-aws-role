@@ -3,7 +3,7 @@
 
 ## This function takes only one argument, the role name.  
 
-function assume {
+assume() {
   role="$1"
   duration=1800
   result="$(aws sts assume-role --role-arn "$role" \

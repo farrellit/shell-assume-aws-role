@@ -10,7 +10,7 @@ function assume {
   echo "Secret access key? "
   read key
   echo "Token? "
-  read $token
+  read token
   AWS_ACCESS_KEY_ID=$id
   AWS_SECRET_ACCESS_TOKEN=$key
   unset AWS_SESSION_TOKEN

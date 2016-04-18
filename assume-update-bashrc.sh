@@ -3,8 +3,18 @@ function assume {
   role=$1
   token=$2
   duration=900
-  file="$HOME/.awsrc"
+  file=""$HOME/.awsrc""
   touch $file
+  prompt "Access key id? "
+  read id
+  prompt "Secret access key? "
+  read key
+  prompt "Token? "
+  read $token
+  AWS_ACCESS_KEY_ID=$id
+  AWS_SECRET_ACCESS_TOKEN=$key
+  unset AWS_SESSION_TOKEN
+  export AWS_SESSION_TOKEN
   if echo "$4" | grep "^[0-9]\{3,4\}$" > /dev/null; then duration=$4; fi
   mfa_device="$(aws --region $region iam list-mfa-devices --query MFADevices[0].SerialNumber --output text  )"
   result="$(aws --region $region \

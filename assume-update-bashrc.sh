@@ -1,7 +1,7 @@
 function assume {
   region=us-east-1
-  role=$2
-  token=$3
+  role=$1
+  token=$2
   duration=900
   file="$HOME/.awsrc"
   touch $file

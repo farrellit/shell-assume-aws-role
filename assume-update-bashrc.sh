@@ -15,12 +15,12 @@ function assume {
   if [ $? -ne 0 ]; then 
       echo "Failed to assume role" 1>&2; return 1; 
   else
-    AWS_ACCESS_KEY_ID="`echo $result | awk '{ print $1 }'`"
-    AWS_SECRET_ACCESS_KEY="`echo $result | awk '{ print $2 }'`"
-    AWS_SESSION_TOKEN="`echo $result | awk '{ print $3 }'`"
-    echo "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"  > $file
-    echo "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY/" >> $file
-    echo "export AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN/" >> $file
+    _AWS_ACCESS_KEY_ID="`echo $result | awk '{ print $1 }'`"
+    _AWS_SECRET_ACCESS_KEY="`echo $result | awk '{ print $2 }'`"
+    _AWS_SESSION_TOKEN="`echo $result | awk '{ print $3 }'`"
+    echo "export AWS_ACCESS_KEY_ID=$_AWS_ACCESS_KEY_ID"  > $file
+    echo "export AWS_SECRET_ACCESS_KEY=$_AWS_SECRET_ACCESS_KEY/" >> $file
+    echo "export AWS_SESSION_TOKEN=$_AWS_SESSION_TOKEN/" >> $file
     return 0
   fi
 }

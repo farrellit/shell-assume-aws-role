@@ -5,11 +5,11 @@ function assume {
   duration=900
   file=""$HOME/.awsrc""
   touch $file
-  prompt "Access key id? "
+  echo "Access key id? "
   read id
-  prompt "Secret access key? "
+  echo "Secret access key? "
   read key
-  prompt "Token? "
+  echo "Token? "
   read $token
   AWS_ACCESS_KEY_ID=$id
   AWS_SECRET_ACCESS_TOKEN=$key

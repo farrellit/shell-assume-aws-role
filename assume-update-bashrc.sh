@@ -19,8 +19,7 @@ function assume {
     AWS_ACCESS_KEY_ID="`echo $result | awk '{ print $1 }'`"
     AWS_SECRET_ACCESS_KEY="`echo $result | awk '{ print $2 }'`"
     AWS_SESSION_TOKEN="`echo $result | awk '{ print $3 }'`"
-    sed -i.bak -e '/^AWS_ACCESS_KEY_ID=./d' -e '/^AWS_SECRET_ACCESS_KEY=/d' -e '/^AWS_SESSION_TOKEN=./d'  $file
-    echo "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"  >> $file
+    echo "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"  > $file
     echo "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY/" >> $file
     echo "export AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN/" >> $file
     return 0

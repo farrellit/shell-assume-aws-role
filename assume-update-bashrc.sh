@@ -1,13 +1,12 @@
 function assume {
   region=us-east-1
-  profile=$1
   role=$2
   token=$3
   duration=900
   file="$HOME/.awsrc"
   touch $file
   if echo "$4" | grep "^[0-9]\{3,4\}$" > /dev/null; then duration=$4; fi
-  mfa_device="$(aws --profile $profile --region $region iam list-mfa-devices --query MFADevices[0].SerialNumber --output text  )"
+  mfa_device="$(aws --region $region iam list-mfa-devices --query MFADevices[0].SerialNumber --output text  )"
   result="$(aws --profile $profile --region $region \
     sts assume-role --role-arn "$role" \
     --serial-number "$mfa_device" --role-session-name "`whoami`" --duration-seconds "$duration" \

@@ -18,9 +18,9 @@ function assume {
     _AWS_ACCESS_KEY_ID="`echo $result | awk '{ print $1 }'`"
     _AWS_SECRET_ACCESS_KEY="`echo $result | awk '{ print $2 }'`"
     _AWS_SESSION_TOKEN="`echo $result | awk '{ print $3 }'`"
-    echo "export AWS_ACCESS_KEY_ID=$_AWS_ACCESS_KEY_ID"  > $file
-    echo "export AWS_SECRET_ACCESS_KEY=$_AWS_SECRET_ACCESS_KEY/" >> $file
-    echo "export AWS_SESSION_TOKEN=$_AWS_SESSION_TOKEN/" >> $file
+    echo "export AWS_ACCESS_KEY_ID=\"$_AWS_ACCESS_KEY_ID\""  > $file
+    echo "export AWS_SECRET_ACCESS_KEY=\"$_AWS_SECRET_ACCESS_KEY\"" >> $file
+    echo "export AWS_SESSION_TOKEN=\"$_AWS_SESSION_TOKEN\"" >> $file
     return 0
   fi
 }

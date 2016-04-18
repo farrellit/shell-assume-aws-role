@@ -7,7 +7,7 @@ function assume {
   touch $file
   if echo "$4" | grep "^[0-9]\{3,4\}$" > /dev/null; then duration=$4; fi
   mfa_device="$(aws --region $region iam list-mfa-devices --query MFADevices[0].SerialNumber --output text  )"
-  result="$(aws --profile $profile --region $region \
+  result="$(aws --region $region \
     sts assume-role --role-arn "$role" \
     --serial-number "$mfa_device" --role-session-name "`whoami`" --duration-seconds "$duration" \
     --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text --token-code "$token" \

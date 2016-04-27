@@ -1,4 +1,5 @@
 function assume {
+  set +x
   region=us-east-1
   profile=$1
   role=$2

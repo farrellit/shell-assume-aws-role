@@ -18,6 +18,7 @@ function assume {
     export AWS_ACCESS_KEY_ID="`echo $result | awk '{ print $1 }'`"
     export AWS_SECRET_ACCESS_KEY="`echo $result | awk '{ print $2 }'`"
     export AWS_SESSION_TOKEN="`echo $result | awk '{ print $3 }'`"
+    export AWS_SECURITY_TOKEN="`echo $result | awk '{ print $3 }'`"
     return 0
   fi
 }
